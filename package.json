@@ -1,0 +1,20 @@
+{
+  "name": "learning-express",
+  "version": "0.0.1",
+  "description": "Estoy compartiendo mi aprendizaje de Node con ExpressJs",
+  "main": "/src/app.js",
+  "type": "module",
+  "scripts": {
+    "dev":"node --watch src/app.js",
+    "start":"node src/app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "aprendiendo",
+    "node",
+    "express",
+    "js"
+  ],
+  "author": "{ JEBC-DeV }",
+  "license": "MIT"
+}
