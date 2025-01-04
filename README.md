@@ -2,10 +2,6 @@
 
 Bienvenido a esta guía donde aprenderás a usar **ExpressJs** desde sus conceptos más básicos. Si estás comenzando en el mundo del desarrollo backend con **Node.js**, esta referencia te ayudará a entender las bases esenciales para construir servidores rápidos y eficientes. A lo largo de esta guía, utilizaremos ejemplos prácticos y comandos sencillos. ¡Pongámonos en marcha! 🚀
 
-## Contenidos
-
--   [00 - Introducción](#00---introducción)
--   [01 - Instalación y Configuración Básica](#01---instalación-y-configuración-básica)
 
 ---
 
