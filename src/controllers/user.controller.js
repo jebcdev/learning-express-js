@@ -29,28 +29,27 @@ const getUserById = (req, res) => {
         });
     }
 };
- 
+
 const createUser = (req, res) => {
-    const userData = req.body;
+    try {
+        const userData = req.body;
+        const newUser = userModel.createUser(userData);
 
-    if (!userData.name || !userData.surname || !userData.email) {
-        return res.status(400).json({
-            message: "All fields are required",
-            data: null,
-        });
-    }
-
-    const newUser = userModel.createUser(userData);
-
-    if (!newUser) {
-        return res.status(400).json({
-            message: "User not created",
-            data: null,
-        });
-    } else {
-        return res.status(201).json({
-            message: "User created",
-            data: newUser,
+        if (!newUser) {
+            return res.status(400).json({
+                message: "User not created",
+                data: null,
+            });
+        } else {
+            return res.status(201).json({
+                message: "User created",
+                data: newUser,
+            });
+        }
+    } catch (error) {
+        res.status(400).json({
+            message: "Error While Creating User...",
+            data: error,
         });
     }
 };
@@ -59,13 +58,6 @@ const updateUser = (req, res) => {
     const id = parseInt(req.params.id);
 
     const userData = req.body;
-
-    if (!userData.name || !userData.surname || !userData.email) {
-        return res.status(400).json({
-            message: "All fields are required",
-            data: null,
-        });
-    }
 
     const updatedUser = userModel.updateUser(id, userData);
 

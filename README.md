@@ -170,4 +170,6 @@ Ambos middlewares son esenciales para aplicaciones que aceptan datos desde formu
 
 ## 03 - CRUD Básico (Para probar todos los metodos)
 
-## 04 - Implementar ZOD Validator | Usando Postman para Probar Nuestra Api (Proximamente)...
+## 04 - Implementar ZOD Validator | Usando Postman para Probar Nuestra Api
+
+## 05 - Introducción al uso de Prisma ORM (Proximamente...)

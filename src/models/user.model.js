@@ -22,6 +22,7 @@ const createUser = (user) => {
 };
 
 const updateUser = (id, user) => {
+    
     const index = users.findIndex((user) => user.id === id);
 
     if (index !== -1) {
