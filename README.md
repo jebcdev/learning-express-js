@@ -2,7 +2,6 @@
 
 Bienvenido a esta guía donde aprenderás a usar **ExpressJs** desde sus conceptos más básicos. Si estás comenzando en el mundo del desarrollo backend con **Node.js**, esta referencia te ayudará a entender las bases esenciales para construir servidores rápidos y eficientes. A lo largo de esta guía, utilizaremos ejemplos prácticos y comandos sencillos. ¡Pongámonos en marcha! 🚀
 
-
 ---
 
 ## 00 - Introducción
@@ -58,4 +57,112 @@ Usa `npm run dev` para iniciar el servidor en modo desarrollo con reinicios auto
 
 ### ✅ Creación de Archivos .gitignore
 
-Configura del archivo `.gitignore` para omitir carpetas y archivos innecesarios:
+Configura el archivo `.gitignore` para omitir carpetas y archivos innecesarios:
+
+---
+
+## 02 - Instalar y Probar ExpressJs
+
+### 🛒 Instalar ExpressJS vía NPM
+
+Para instalar la versión más reciente:
+
+```bash
+npm install express@^5.0.1 --save
+```
+
+### 🔧 Utilizar ExpressJs en el Archivo `app.js`
+
+Primero, crea el archivo `app.js` y agrega el siguiente código:
+
+```javascript
+import express from 'express';
+const app = express();
+
+// Definir el primer endpoint
+app.get('/', (req, res) => {
+  res.send('Hola, mundo desde Express!');
+});
+
+// Levantar el servidor
+const PORT = 4000;
+app.listen(PORT, () => {
+  console.log(`Servidor corriendo en http://localhost:${PORT}`);
+});
+```
+
+### 🌐 Consultar desde el Navegador
+
+1. Ejecuta el servidor:
+
+   ```bash
+   npm run dev
+   ```
+
+2. Abre tu navegador y visita `http://localhost:4000` para ver la respuesta del servidor.
+
+### 🔓 Instalar, Configurar y Usar DotEnv
+
+1. Instala `dotenv` para manejar variables de entorno:
+
+   ```bash
+   npm install dotenv
+   ```
+
+2. Crea un archivo `.env` y define tus variables:
+
+   ```plaintext
+   PORT=4000
+   ```
+
+3. Modifica `app.js` para usar `dotenv`:
+
+   ```javascript
+   import 'dotenv/config';
+
+   const PORT = process.env.PORT || 4000;
+   app.listen(PORT, () => {
+     console.log(`Servidor corriendo en http://localhost:${PORT}`);
+   });
+   ```
+
+### 🛁 Instalar y Configurar CORS
+
+**CORS** (Cross-Origin Resource Sharing) es un mecanismo que permite controlar las solicitudes entre diferentes dominios. Es especialmente útil cuando el cliente (frontend) y el servidor (backend) se ejecutan en diferentes orígenes.
+
+1. Instala el paquete `cors`:
+
+   ```bash
+   npm install cors
+   ```
+
+2. Importa y usa `cors` en tu aplicación:
+
+   ```javascript
+   import cors from 'cors';
+   
+   app.use(cors());
+   ```
+
+El uso de `cors()` sin parámetros permite todas las solicitudes entre dominios. Para una configuración más estricta, puedes especificar opciones adicionales como `origin` para definir dominios permitidos.
+
+### 🔎 Analizar Datos JSON y Formularios
+
+Para manejar datos de entrada en tu servidor Express, es necesario configurar middlewares que procesen las solicitudes JSON y las enviadas mediante formularios.
+
+1. Habilita el análisis de JSON:
+
+   ```javascript
+   app.use(express.json());
+   ```
+   Este middleware permite que tu servidor procese datos en formato JSON, como los enviados desde un cliente mediante `POST` o `PUT`.
+
+2. Habilita el análisis de formularios codificados en URL:
+
+   ```javascript
+   app.use(express.urlencoded({ extended: true }));
+   ```
+   Esta línea permite manejar datos enviados mediante formularios HTML. La opción `{ extended: true }` permite analizar objetos anidados y arreglos.
+
+Ambos middlewares son esenciales para aplicaciones que aceptan datos desde formularios o APIs RESTful.
+
