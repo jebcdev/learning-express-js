@@ -76,18 +76,18 @@ npm install express@^5.0.1 --save
 Primero, crea el archivo `app.js` y agrega el siguiente código:
 
 ```javascript
-import express from 'express';
+import express from "express";
 const app = express();
 
 // Definir el primer endpoint
-app.get('/', (req, res) => {
-  res.send('Hola, mundo desde Express!');
+app.get("/", (req, res) => {
+    res.send("Hola, mundo desde Express!");
 });
 
 // Levantar el servidor
 const PORT = 4000;
 app.listen(PORT, () => {
-  console.log(`Servidor corriendo en http://localhost:${PORT}`);
+    console.log(`Servidor corriendo en http://localhost:${PORT}`);
 });
 ```
 
@@ -95,9 +95,9 @@ app.listen(PORT, () => {
 
 1. Ejecuta el servidor:
 
-   ```bash
-   npm run dev
-   ```
+    ```bash
+    npm run dev
+    ```
 
 2. Abre tu navegador y visita `http://localhost:4000` para ver la respuesta del servidor.
 
@@ -105,26 +105,26 @@ app.listen(PORT, () => {
 
 1. Instala `dotenv` para manejar variables de entorno:
 
-   ```bash
-   npm install dotenv
-   ```
+    ```bash
+    npm install dotenv
+    ```
 
 2. Crea un archivo `.env` y define tus variables:
 
-   ```plaintext
-   PORT=4000
-   ```
+    ```plaintext
+    PORT=4000
+    ```
 
 3. Modifica `app.js` para usar `dotenv`:
 
-   ```javascript
-   import 'dotenv/config';
+    ```javascript
+    import "dotenv/config";
 
-   const PORT = process.env.PORT || 4000;
-   app.listen(PORT, () => {
-     console.log(`Servidor corriendo en http://localhost:${PORT}`);
-   });
-   ```
+    const PORT = process.env.PORT || 4000;
+    app.listen(PORT, () => {
+        console.log(`Servidor corriendo en http://localhost:${PORT}`);
+    });
+    ```
 
 ### 🛁 Instalar y Configurar CORS
 
@@ -132,17 +132,17 @@ app.listen(PORT, () => {
 
 1. Instala el paquete `cors`:
 
-   ```bash
-   npm install cors
-   ```
+    ```bash
+    npm install cors
+    ```
 
 2. Importa y usa `cors` en tu aplicación:
 
-   ```javascript
-   import cors from 'cors';
-   
-   app.use(cors());
-   ```
+    ```javascript
+    import cors from "cors";
+
+    app.use(cors());
+    ```
 
 El uso de `cors()` sin parámetros permite todas las solicitudes entre dominios. Para una configuración más estricta, puedes especificar opciones adicionales como `origin` para definir dominios permitidos.
 
@@ -152,19 +152,22 @@ Para manejar datos de entrada en tu servidor Express, es necesario configurar mi
 
 1. Habilita el análisis de JSON:
 
-   ```javascript
-   app.use(express.json());
-   ```
-   Este middleware permite que tu servidor procese datos en formato JSON, como los enviados desde un cliente mediante `POST` o `PUT`.
+    ```javascript
+    app.use(express.json());
+    ```
+
+    Este middleware permite que tu servidor procese datos en formato JSON, como los enviados desde un cliente mediante `POST` o `PUT`.
 
 2. Habilita el análisis de formularios codificados en URL:
 
-   ```javascript
-   app.use(express.urlencoded({ extended: true }));
-   ```
-   Esta línea permite manejar datos enviados mediante formularios HTML. La opción `{ extended: true }` permite analizar objetos anidados y arreglos.
+    ```javascript
+    app.use(express.urlencoded({ extended: true }));
+    ```
+
+    Esta línea permite manejar datos enviados mediante formularios HTML. La opción `{ extended: true }` permite analizar objetos anidados y arreglos.
 
 Ambos middlewares son esenciales para aplicaciones que aceptan datos desde formularios o APIs RESTful.
 
+## 03 - CRUD Básico (Para probar todos los metodos)
 
-## 03 - CRUD Básico (Para probar todos los metodos) Proximamente ...
+## 04 - Implementar ZOD Validator (Proximamente)...
