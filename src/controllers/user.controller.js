@@ -1,7 +1,10 @@
-import { userModel } from "../models/user.model.js";
+import { PrismaClient } from "@prisma/client";
 
-const getAllUsers = (req, res) => {
-    const users = userModel.getAllUsers();
+const DbClient = new PrismaClient();
+
+const getAllUsers = async (req, res) => {
+    const users = await DbClient.user.findMany();
+
     if (users.length === 0) {
         res.status(404).json({ message: "No users found" });
     } else {
@@ -12,10 +15,14 @@ const getAllUsers = (req, res) => {
     }
 };
 
-const getUserById = (req, res) => {
+const getUserById = async (req, res) => {
     const id = parseInt(req.params.id);
 
-    const user = userModel.getUserById(id);
+    const user = await DbClient.user.findUnique({
+        where: {
+            id: id,
+        },
+    });
 
     if (!user) {
         res.status(404).json({
@@ -30,10 +37,11 @@ const getUserById = (req, res) => {
     }
 };
 
-const createUser = (req, res) => {
+const createUser = async (req, res) => {
     try {
-        const userData = req.body;
-        const newUser = userModel.createUser(userData);
+        const newUser = await DbClient.user.create({
+            data: req.body,
+        });
 
         if (!newUser) {
             return res.status(400).json({
@@ -54,12 +62,13 @@ const createUser = (req, res) => {
     }
 };
 
-const updateUser = (req, res) => {
+const updateUser = async (req, res) => {
     const id = parseInt(req.params.id);
 
-    const userData = req.body;
-
-    const updatedUser = userModel.updateUser(id, userData);
+    const updatedUser = await DbClient.user.update({
+        where: { id: id },
+        data: req.body,
+    });
 
     if (!updatedUser) {
         return res.status(400).json({
@@ -74,9 +83,12 @@ const updateUser = (req, res) => {
     }
 };
 
-const deleteUser = (req, res) => {
+const deleteUser = async (req, res) => {
     const id = parseInt(req.params.id);
-    const deletedUser = userModel.deleteUser(id);
+
+    const deletedUser =await DbClient.user.delete({
+        where: { id: id },
+    });
 
     if (!deletedUser) {
         return res.status(400).json({

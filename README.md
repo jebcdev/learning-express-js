@@ -172,4 +172,10 @@ Ambos middlewares son esenciales para aplicaciones que aceptan datos desde formu
 
 ## 04 - Implementar ZOD Validator | Usando Postman para Probar Nuestra Api
 
-## 05 - Introducción al uso de Prisma ORM (Proximamente...)
+## 05 - Introducción al uso de Prisma ORM
+
+## 06 - Modificar Tabla de Usuarios Usando BCryptJs para Almacenar Contrseñas!! (Proximamente...)
+
+## 07 - Implementar Login/Register/Profile (Proximamente...)
+
+## 08 - Proteger Rutas (Usuarios Autentificads) (Proximamente...)
