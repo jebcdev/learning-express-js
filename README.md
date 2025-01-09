@@ -174,7 +174,7 @@ Ambos middlewares son esenciales para aplicaciones que aceptan datos desde formu
 
 ## 05 - Introducción al uso de Prisma ORM
 
-## 06 - Modificar Tabla de Usuarios Usando BCryptJs para Almacenar Contrseñas!! (Proximamente...)
+## 06 - Modificar Tabla de Usuarios para Almacenar una Contraseña Usando BCryptJs 
 
 ## 07 - Implementar Login/Register/Profile (Proximamente...)
 

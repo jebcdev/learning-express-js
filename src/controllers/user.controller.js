@@ -1,4 +1,5 @@
 import { PrismaClient } from "@prisma/client";
+import { BcryptUtil } from "../utils/bcrypt.util.js";
 
 const DbClient = new PrismaClient();
 
@@ -39,8 +40,14 @@ const getUserById = async (req, res) => {
 
 const createUser = async (req, res) => {
     try {
+        const userData = req.body;
+
+        userData.password = await BcryptUtil.HashPassword(
+            userData.password
+        );
+
         const newUser = await DbClient.user.create({
-            data: req.body,
+            data: userData,
         });
 
         if (!newUser) {
@@ -65,9 +72,16 @@ const createUser = async (req, res) => {
 const updateUser = async (req, res) => {
     const id = parseInt(req.params.id);
 
+    const userData = req.body;
+
+    if (userData.password)
+        userData.password = await BcryptUtil.HashPassword(
+            userData.password
+        );
+
     const updatedUser = await DbClient.user.update({
         where: { id: id },
-        data: req.body,
+        data: userData,
     });
 
     if (!updatedUser) {
@@ -86,7 +100,7 @@ const updateUser = async (req, res) => {
 const deleteUser = async (req, res) => {
     const id = parseInt(req.params.id);
 
-    const deletedUser =await DbClient.user.delete({
+    const deletedUser = await DbClient.user.delete({
         where: { id: id },
     });
 

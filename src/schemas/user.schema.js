@@ -19,6 +19,15 @@ const create = z.object({
         .max(100),
 
     email: z.string().email(),
+
+    password: z
+        .string({
+            required_error: "Password Is Required",
+            invalid_type_error: "Password Must Be a String",
+            message: "Password Is Required And Must Be a String",
+        })
+        .min(8)
+        .max(100),
 });
 
 const update = z.object({
@@ -43,6 +52,17 @@ const update = z.object({
         .optional(true),
 
     email: z.string().email().optional(true),
+
+    password: z
+        .string({
+            required_error: "Password Is Required",
+            invalid_type_error: "Password Must Be a String",
+            message: "Password Is Required And Must Be a String",
+        })
+        .min(8)
+        .max(100)
+        .optional(true),
+        
 });
 
 export const userSchema = {

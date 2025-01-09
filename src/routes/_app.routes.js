@@ -1,9 +1,15 @@
 import { Router } from "express";
 import userRoutes from "./user.routes.js";
+import { BcryptUtil } from "../utils/bcrypt.util.js";
 
 const appRoutes = Router();
 
+
+
 appRoutes.get("/", (req, res) => {
+
+
+
     res.status(200).json({
         message: "Hello, Wold! Welcome To The Api",
         data: [
