@@ -1,6 +1,6 @@
 import { Router } from "express";
 import userRoutes from "./user.routes.js";
-import { BcryptUtil } from "../utils/bcrypt.util.js";
+import authRoutes from "./auth.routes.js";
 
 const appRoutes = Router();
 
@@ -22,5 +22,6 @@ appRoutes.get("/", (req, res) => {
 });
 
 appRoutes.use("/users", userRoutes);
+appRoutes.use("/auth", authRoutes);
 
 export default appRoutes;

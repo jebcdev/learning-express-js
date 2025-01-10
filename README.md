@@ -176,6 +176,4 @@ Ambos middlewares son esenciales para aplicaciones que aceptan datos desde formu
 
 ## 06 - Modificar Tabla de Usuarios para Almacenar una Contraseña Usando BCryptJs 
 
-## 07 - Implementar Login/Register
-
-## 08 - Proteger Rutas (Usuarios Autentificads) => Profile
+## 07 - Implementar Login/Register | Proteger Rutas (Usuarios Autentificados) => Profile

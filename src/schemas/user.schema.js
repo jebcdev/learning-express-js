@@ -62,10 +62,23 @@ const update = z.object({
         .min(8)
         .max(100)
         .optional(true),
-        
+});
+
+const login = z.object({
+    email: z.string().email(),
+
+    password: z
+        .string({
+            required_error: "Password Is Required",
+            invalid_type_error: "Password Must Be a String",
+            message: "Password Is Required And Must Be a String",
+        })
+        .min(8)
+        .max(100),
 });
 
 export const userSchema = {
     create,
     update,
+    login,
 };
