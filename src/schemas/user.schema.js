@@ -28,6 +28,8 @@ const create = z.object({
         })
         .min(8)
         .max(100),
+
+        isAdmin: z.boolean().optional(true),
 });
 
 const update = z.object({
@@ -62,6 +64,8 @@ const update = z.object({
         .min(8)
         .max(100)
         .optional(true),
+
+        isAdmin: z.boolean().optional(true),
 });
 
 const login = z.object({
